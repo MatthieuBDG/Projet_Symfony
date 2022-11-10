@@ -1,0 +1,83 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top ">
+	<div class="container d-flex align-items-center">
+
+		<!-- <h1 class="logo me-auto"><a href="./">PROJET WEB P1</a></h1>-->
+		<!-- Uncomment below if you prefer to use an image logo -->
+			<a href="./" class="logo me-auto"> <img src="assets/img/logo2.png" alt="" class="img-fluid"></a>
+		<!-- navbar -->
+		<nav id="navbar" class="navbar">
+			<ul>
+				<li>
+					<a class="nav-link scrollto" href="./">
+						<i class='bx bxs-home'></i>
+					</span>&nbsp;Accueil</li>
+			</a>
+		</li>
+		<?php if (!isset($_SESSION['Email'])) { ?>
+			<li>
+				<a class="nav-link scrollto" href="connexion">
+					<span>
+						<i class='bx bx-log-in-circle'></i>
+					</span>&nbsp;Connexion</a>
+			</li>
+		<?php } else { ?>
+			<li class="dropdown">
+				<a href="mon-espace.php">
+					<span>
+						<i class="bi bi-chevron-down"></i>&nbsp;Mon espace</span>
+				</a>
+				<ul>
+					<?php if ($_SESSION['Type_user'] == 2 || $_SESSION['Type_user'] == 3) { ?>
+						<li>
+							<a href="recherche-feuille-emargement.php">
+								<span>
+									<i class='bx bxs-file-find' id="icons"></i>&nbsp;Recherche feuille émargement</a>
+							</span>
+						</li>
+						<li>
+							<a href="nouveau-cours.php">
+								<span>
+									<i class='bx bxs-plus-circle' id="icons"></i>&nbsp;Nouveau cours</a>
+							</span>
+						</li>
+					<?php } ?>
+					<?php if ($_SESSION['Type_user'] == 3) { ?>
+						<li>
+							<a href="nouveau-enseignant.php">
+								<span>
+									<i class='bx bxs-user-plus' id="icons"></i>&nbsp;Nouveau Enseignant</a>
+							</span>
+						</li>
+						<li>
+							<a href="nouveau-eleve.php">
+								<span>
+									<i class='bx bxs-user-plus' id="icons"></i>&nbsp;Nouveau Elève</a>
+							</span>
+						</li>
+						<li>
+							<a href="nouvelle-classe.php">
+								<span>
+									<i class='bx bxs-plus-circle' id="icons"></i>&nbsp;Nouvelle Classe</a>
+							</span>
+						</li>
+						<li>
+							<a href="nouveau-groupe.php">
+								<span>
+									<i class='bx bxs-group' id="icons"></i>&nbsp;Nouveau Groupe</a>
+							</span>
+						</li>
+					<?php } ?>
+				</ul>
+			</li>
+			<li>
+				<a class="nav-link scrollto" href="deconnexion.php">
+					<span>
+						<i class='bx bx-log-out-circle'></i>
+					</span>&nbsp;Deconnexion</a>
+			</li>
+		<?php } ?>
+	</ul>
+	<i class="bi bi-list mobile-nav-toggle"></i>
+</nav>
+<!-- .navbar --></body></html></div></header><!-- End Header -->
