@@ -4,35 +4,28 @@
 
 		<!-- <h1 class="logo me-auto"><a href="./">PROJET WEB P1</a></h1>-->
 		<!-- Uncomment below if you prefer to use an image logo -->
-			<a href="./" class="logo me-auto"> <img src="assets/img/logo2.png" alt="" class="img-fluid"></a>
+			<a href="../" class="logo me-auto"> <img src="../assets/img/logo2.png" alt="" class="img-fluid"></a>
 		<!-- navbar -->
 		<nav id="navbar" class="navbar">
 			<ul>
 				<li>
-					<a class="nav-link scrollto" href="./">
+					<a class="nav-link scrollto" href="../">
 						<i class='bx bxs-home'></i>
 					</span>&nbsp;Accueil</li>
 			</a>
 		</li>
-		<?php if (!isset($_SESSION['Email'])) { ?>
-			<li>
-				<a class="nav-link scrollto" href="connexion">
-					<span>
-						<i class='bx bx-log-in-circle'></i>
-					</span>&nbsp;Connexion</a>
-			</li>
-		<?php } else { ?>
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 			<li class="dropdown">
-				<a href="mon-espace.php">
+				<a href="../mon-espace">
 					<span>
 						<i class="bi bi-chevron-down"></i>&nbsp;Mon espace</span>
 				</a>
 				<ul>
-					<?php if ($_SESSION['Type_user'] == 2 || $_SESSION['Type_user'] == 3) { ?>
+					{% if is_granted('ROLE_ADMINISTRATION') %}
 						<li>
-							<a href="recherche-feuille-emargement.php">
+							<a href="../nouveau/intervenant">
 								<span>
-									<i class='bx bxs-file-find' id="icons"></i>&nbsp;Recherche feuille émargement</a>
+									<i class='bx bxs-plus-circle' id="icons"></i>&nbsp;Nouveau intervenant</a>
 							</span>
 						</li>
 						<li>
@@ -41,7 +34,7 @@
 									<i class='bx bxs-plus-circle' id="icons"></i>&nbsp;Nouveau cours</a>
 							</span>
 						</li>
-					<?php } ?>
+					{% endif %}
 					<?php if ($_SESSION['Type_user'] == 3) { ?>
 						<li>
 							<a href="nouveau-enseignant.php">
@@ -71,12 +64,21 @@
 				</ul>
 			</li>
 			<li>
-				<a class="nav-link scrollto" href="deconnexion.php">
+				<a class="nav-link scrollto" href="../deconnexion">
 					<span>
 						<i class='bx bx-log-out-circle'></i>
 					</span>&nbsp;Deconnexion</a>
 			</li>
-		<?php } ?>
+		{% else %}
+
+			<li>
+				<a class="nav-link scrollto" href="connexion">
+					<span>
+						<i class='bx bx-log-in-circle'></i>
+					</span>&nbsp;Connexion</a>
+			</li>
+
+		{% endif %}
 	</ul>
 	<i class="bi bi-list mobile-nav-toggle"></i>
 </nav>

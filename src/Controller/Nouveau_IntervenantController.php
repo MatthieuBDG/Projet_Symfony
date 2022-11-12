@@ -12,22 +12,30 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-class Nouveau_Intervenant extends AbstractController
+class Nouveau_IntervenantController extends AbstractController
 {
-
-     /**
-     * @Route("/nouveau/intervenant", name="new_intervenant")
+    /**
+     * @Route("/nouveau/intervenant", name="app_register")
+     * 
+     
      */
-    public function index(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMINISTRATION');
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //$role = $form->get('roles')->getData();
+            $role[] = 'ROLE_INTERVENANT';
+            $user->setRoles($role);
+        
             // encode the plain password
+
             $user->setPassword(
-            $userPasswordHasher->hashPassword(
+                $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
@@ -40,10 +48,9 @@ class Nouveau_Intervenant extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        
         return $this->render('pages/nouveau_intervenant.html.twig', [
-            'page_title' => 'Nouveau intervenant',
             'registrationForm' => $form->createView(),
+            'page_title' => 'Nouveau Intervenant',
         ]);
     }
 }
