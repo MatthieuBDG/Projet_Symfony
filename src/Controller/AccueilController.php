@@ -14,7 +14,6 @@ class AccueilController extends AbstractController
         $user = 1;
         return $this->render('pages/accueil.html.twig', [
             'page_title' => 'Accueil',
-            'user' => $user,
         ]);
     }
 }

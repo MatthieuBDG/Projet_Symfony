@@ -1,68 +1,40 @@
 {% extends 'base/base_add.html.twig' %}
 {% block content %}
 
-<div class="section-title">
-	<h2>{{ page_title }}</h2>
-</div>
-<!-- ======= Ajout du formulaire de contact ======= -->
-<!-- Register Form -->
-<div class="row">
-	<div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-		<form action="#" method="post" role="form" class="php-email-form">
+	<div class="section-title">
+		<h2>{{ page_title }}</h2>
+	</div>
+	<!-- Register Form -->
+	<div class="row">
+		<div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch">
+			{{ form_start(registrationForm, {
+    attr: {
+        class: 'php-email-form'
+    }
+}) }}
 			<div class="row">
 				<div class="form-group col-md-6">
-					<label for="name">Nom*</label>
-					<input type="text" name="nom" class="form-control" id="nom" value="<?php if (!empty($nom) && isset($erreur)) { echo $nom; } ?>" required>
-				</div>
-				<div class="form-group col-md-6">
-					<label for="name">Prenom*</label>
-					<input type="text" name="prenom" class="form-control" id="prenom" value="<?php if (!empty($prenom) && isset($erreur)) { echo $prenom; } ?>" required>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-md-6">
-					<label for="name">Adresse Email*</label>
-					<input type="email" name="email" class="form-control" id="email" value="<?php if (!empty($email) && isset($erreur)) { echo $email; } ?>" required>
-				</div>
-				<div class="form-group col-md-6">
-					<label for="name">Code confidentiel (6 chiffres)*</label>
-					<input type="password" name="code" class="form-control" id="code" minlength="6" maxlength="6" required>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="name">Classe*</label>
-				<select class="form-select" aria-label="classe" id="classe" name="classe" required>
-					<option value="NULL" selected="true" disabled="disabled">Choisir une classe*</option>
+					{{ form_row(registrationForm.email,   {  
+					label: 'Adresse Email*',
+    row_attr: {
+        class: 'input-group'
+    } }) }}
 
-					<?php while ($req_recup_classe = $req_recup_classes->fetch()) { ?>
-						<option value="<?php echo $req_recup_classe['ID_Classe'] ?>"><?php echo $req_recup_classe['Nom'] ?></option>
-					<?php } ?>
-				</select>
-			</div>
-			<div class="form-group" id="options-container" style="display: none;">
-				<label for="name">Option (facultatif)</label>
-				<div class="alert alert-info mb-3" role="alert">
-					<select class="form-select" name="options" aria-label="options" id="options"></select>
 				</div>
-			</div>
-			<div class="my-3">
-				<?php
-                                    if (isset($erreur)) {
-                                    ?>
-					<div class="error-message"><?php echo $erreur ?></div>
-					<?php
-                                    }
-                                    if (isset($envoyer)) {
-                                    ?>
-						<div class="sent-message"><?php echo $envoyer ?></div>
-					<?php
-                                    }
-                                    ?>
-				</div>
-				<div class="text-left"><input class="btn btn-primary w-50" type="submit" name="submit" value="Enregistrer"></div>
 
-			</form>
+				<div class="form-group col-md-6">
+					{{ form_row(registrationForm.plainPassword, {
+            label: 'Code confidentiel*',
+			    row_attr: {
+        class: 'input-group'
+    }
+        }) }}
+				</div>
+			</div>
+
+			<div class="text-right"><input class="btn btn-primary w-50 mt-3" type="submit" name="submit" value="Enregistrer"></div>
+
+			{{ form_end(registrationForm) }}
 		</div>
 	</div>
-	<!-- End Contact Form -->
 {% endblock %}

@@ -14,13 +14,12 @@ use Symfony\Component\Routing\Annotation\Route;
   class ApiLoginController extends AbstractController
   {
      public function index(){
+
          if (null === $user) {
              return $this->json([
-                 'message' => 'missing credentials',
+                 'message' => "L'utilisateur n'exite pas",
             ], Response::HTTP_UNAUTHORIZED);
          }
-
-        $token = 'test';
 
           return $this->json([
              'message' => 'Welcome to your new controller!',
