@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Accueil</title>
+		<meta
+		content="PROJET WEB P1 (Bachelor RPI)" name="description">
+		<!-- Favicons -->
+		<link href="assets/img/favicon.png" rel="icon">
+		<link
+		href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+		<!-- Google Fonts -->
+		<link
+		href="assets/fonts/google-font.css" rel="stylesheet">
+		<!-- Vendor CSS Files -->
+		<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+		<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+		<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+		<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+		<link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+		<link
+		href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+		<!-- Template Main CSS File -->
+		<link href="assets/css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		{# ... #}
+		
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <!-- <h1 class="logo me-auto"><a href="./">PROJET WEB P1</a></h1>-->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a href="./" class="logo me-auto"><img src="assets/img/logo2.png" alt="" class="img-fluid"></a>
+
+      <!-- navbar -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="./"><i class='bx bxs-home'></i></span>&nbsp;Accueil</a></li>
+          <li><a class="nav-link scrollto" href="connexion.php"><span><i class='bx bx-log-in-circle'></i></span>&nbsp;Connexion</a></li>
+          
+            <li class="dropdown"><a href="mon-espace.php"><span><i class="bi bi-chevron-down"></i>&nbsp;Mon espace</span></a>
+              <ul>
+                <?php if ($_SESSION['Type_user'] == 2 || $_SESSION['Type_user'] == 3) { ?>
+                  <li><a href="recherche-feuille-emargement.php"><span><i class='bx bxs-file-find' id="icons"></i>&nbsp;Recherche feuille émargement</a></span></li>
+                  <li><a href="nouveau-cours.php"><span><i class='bx bxs-plus-circle' id="icons"></i>&nbsp;Nouveau cours</a></span></li>
+                <?php } ?>
+                <?php if ($_SESSION['Type_user'] == 3) { ?>
+                  <li><a href="nouveau-enseignant.php"><span><i class='bx bxs-user-plus' id="icons"></i>&nbsp;Nouveau Enseignant</a></span></li>
+                  <li><a href="nouveau-eleve.php"><span><i class='bx bxs-user-plus' id="icons"></i>&nbsp;Nouveau Elève</a></span></li>
+                  <li><a href="nouvelle-classe.php"><span><i class='bx bxs-plus-circle' id="icons"></i>&nbsp;Nouvelle Classe</a></span></li>
+                  <li><a href="nouveau-groupe.php"><span><i class='bx bxs-group' id="icons"></i>&nbsp;Nouveau Groupe</a></span></li>
+                <?php } ?>
+              </ul>
+            </li>
+            <li><a class="nav-link scrollto" href="deconnexion.php"><span><i class='bx bx-log-out-circle'></i></span>&nbsp;Deconnexion</a></li>
+          <?php } ?>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center" style="height: auto;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>{{ page_title }}</h1>
+          <h2>Matthieu Boubée de Gramont - Lucas Dallas Costa</h2>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <!-- End Hero -->
+
+  <div id="preloader"></div>
+  <a href="./" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+	</body>
+</html>

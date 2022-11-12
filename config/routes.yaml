@@ -1,9 +1,12 @@
 index:
     path: /
     controller: App\Controller\AccueilController::Accueil
+<<<<<<< HEAD
+=======
 app_login:
     path: /connexion
     controller: App\Controller\LoginController::login
 new_intervenant:
     path: /nouveau/intervenant
     controller: App\Controller\Nouveau_Intervenant::index
+>>>>>>> 8f3d7c82d0014fc6cfd282d635cfe36cf0d3a3d4
