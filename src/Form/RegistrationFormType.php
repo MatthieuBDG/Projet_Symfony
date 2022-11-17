@@ -27,7 +27,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            /*/
+            /*//
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Intervenant' => 'ROLE_INTERVENANT',
