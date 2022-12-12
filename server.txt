@@ -1,0 +1,3 @@
+php -S 127.0.0.1:8000 -t public
+
+composer create-project symfony/website-skeleton projet_01
