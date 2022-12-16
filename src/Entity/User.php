@@ -20,6 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+
     private $id;
 
     /**
@@ -32,6 +33,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $roles = [];
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $matiere;
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
@@ -54,7 +59,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    public function getMatiere(): ?int
+    {
+        return $this->matiere;
+    }
 
+    public function setMatiere(int $matiere): self
+    {
+        $this->matiere = $matiere;
+
+        return $this;
+    }
     /**
      * A visual identifier that represents this user.
      *
@@ -79,7 +94,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        
+
 
         return array_unique($roles);
     }

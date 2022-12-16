@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,28 +23,17 @@ class Nouveau_IntervenantController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMINISTRATION');
         $user = new User();
+        
         $form = $this->createForm(RegistrationFormType::class, $user);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            //$role = $form->get('roles')->getData();
-            $role[] = 'ROLE_INTERVENANT';
-            $user->setRoles($role);
-        
-            // encode the plain password
-
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
+            $user->setRoles(['ROLE_INTERVENANT']);
+            $user->setMatiere($form->get('matiere')->getData()); // set the selected
+            $user->setPassword($userPasswordHasher->hashPassword($user, $form->get('plainPassword')->getData()));
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-
             return $this->redirectToRoute('app_register');
         }
 
