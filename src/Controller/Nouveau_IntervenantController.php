@@ -34,6 +34,7 @@ class Nouveau_IntervenantController extends AbstractController
             $user->setPassword($userPasswordHasher->hashPassword($user, $form->get('plainPassword')->getData()));
             $entityManager->persist($user);
             $entityManager->flush();
+            $this->addFlash('success_msg', 'Intervenant crée avec succés');
             return $this->redirectToRoute('app_register');
         }
 

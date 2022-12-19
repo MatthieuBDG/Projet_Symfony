@@ -4,15 +4,19 @@
 	<div class="section-title">
 		<h2>{{ page_title }}</h2>
 	</div>
-<!-- Register Form -->
-<div class="row">
-  <div class="col">
-    {{ form_start(registrationForm, {attr: {class: 'php-email-form'}}) }}
-    <div class="row">
+	<!-- Register Form -->
+	<div class="row">
+		<div class="col">
+    
+			<div class="mb-3">
+				{% for flash_success in app.flashes('success_msg') %}
+					<div class="alert alert-success" role="success">{{ flash_success }}</div>
+				{% endfor %}
+			</div>
+			{{ form_start(registrationForm, {attr: {class: 'php-email-form'}}) }}
+			<div class="row"></div>
+			{{ form_end(registrationForm) }}
 
-    </div>
-    {{ form_end(registrationForm) }}
-  </div>
-</div>
+		</div>
+	</div>
 {% endblock %}
-

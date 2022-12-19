@@ -7,3 +7,13 @@ app_login:
 new_intervenant:
     path: /nouveau/intervenant
     controller: App\Controller\Nouveau_Intervenant::index
+    
+app_forgot_password_request:
+    path: /reset-password
+    controller: App\Controller\ResetPasswordController::request
+app_check_email:
+    path: /check-email
+    controller: App\Controller\ResetPasswordController::checkEmail
+app_reset_password:
+    path: /reset/{token}
+    controller: App\Controller\ResetPasswordController::reset

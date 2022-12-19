@@ -35,7 +35,8 @@ security:
                 path: /
                 
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/reset-password, allow_if: "is_anonymous() and !is_authenticated()" }
+        - { path: ^/connexion, allow_if: "is_anonymous() and !is_authenticated()" }
         # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
