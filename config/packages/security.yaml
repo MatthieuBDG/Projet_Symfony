@@ -28,16 +28,12 @@ security:
                 enable_csrf: true
             logout:
                 path: app_logout
-                # where to redirect after logout
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+            remember_me:
+                secret:   '%kernel.secret%' # required
+                lifetime: 604800 # Durée de vie de la session en secondes (ici, une semaine)
+                path: /
+                
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
